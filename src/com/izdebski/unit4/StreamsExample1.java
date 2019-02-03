@@ -4,6 +4,7 @@ import com.izdebski.unit1.Person;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class StreamsExample1 {
 
@@ -16,9 +17,15 @@ public class StreamsExample1 {
                 new Person("Matthew", "Arnold", 39)
         );
 
-        people.stream()
+        /*people.stream()
                 .filter(p -> p.getLastName().startsWith("C"))
                 .forEach(p -> System.out.println(p.getFirstName()));
+                */
 
+        long count = people.parallelStream()
+        .filter(p -> p.getLastName().startsWith("D"))
+                .count();
+
+        System.out.println(count);
     }
 }
